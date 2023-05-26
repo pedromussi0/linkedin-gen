@@ -5,11 +5,11 @@ from django.contrib.auth.models import User
 
 
 class CustomUserCreationForm(UserCreationForm):
-    username = forms.CharField(label='Username')  # Update the import statement
+    username = forms.CharField(label="Username")  # Update the import statement
 
     class Meta(UserCreationForm.Meta):
         model = User
-        fields = ('email', 'username', 'password1', 'password2')
+        fields = ("email", "username", "password1", "password2")
 
 
 class LinkedInBio(models.Model):

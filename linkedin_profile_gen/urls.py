@@ -23,9 +23,17 @@ from django.contrib.auth.views import LoginView
 from app import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('accounts/login/', views.CustomLoginView.as_view(template_name='App/login.html'), name='login'),
-    path('accounts/logout/', auth_views.LogoutView.as_view(next_page='login'), name='logout'),
-    path('', views.home, name='home'),
-    path('generate-bio/', views.generate_bio, name='generate_bio'),
+    path("admin/", admin.site.urls),
+    path(
+        "accounts/login/",
+        views.CustomLoginView.as_view(template_name="App/login.html"),
+        name="login",
+    ),
+    path(
+        "accounts/logout/",
+        auth_views.LogoutView.as_view(next_page="login"),
+        name="logout",
+    ),
+    path("", views.home, name="home"),
+    # path("generate-bio/", views.generate_bio, name="generate_bio"),
 ]
