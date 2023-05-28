@@ -25,29 +25,17 @@ def generate_bio(request):
             request.session["creator"] = creator.id
 
             professional_title = form.cleaned_data["professional_title"]
-            years_of_experience = form.cleaned_data["years_of_experience"]
-            professional_values = form.cleaned_data["professional_values"]
-            problem_solving = form.cleaned_data["problem_solving"]
-            emotional_intelligence = form.cleaned_data["emotional_intelligence"]
-            personal_growth_mindset = form.cleaned_data["personal_growth_mindset"]
-            teamwork_collaboration = form.cleaned_data["teamwork_collaboration"]
-            communication_skills = form.cleaned_data["communication_skills"]
-            initiative_proactivity = form.cleaned_data["initiative_proactivity"]
-            adaptability_resilience = form.cleaned_data["adaptability_resilience"]
+            personalized_fact= form.cleaned_data['personalized_fact']
             value_creation = form.cleaned_data["value_creation"]
             passion_motivation = form.cleaned_data["passion_motivation"]
 
+            with open('teste.txt', 'r') as file:
+                bio_samples = file.read()
+
             bio = generate_lk_bio(
+                bio_samples=bio_samples,
                 professional_title=professional_title,
-                years_of_experience=years_of_experience,
-                professional_values=professional_values,
-                problem_solving=problem_solving,
-                emotional_intelligence=emotional_intelligence,
-                personal_growth_mindset=personal_growth_mindset,
-                teamwork_collaboration=teamwork_collaboration,
-                communication_skills=communication_skills,
-                initiative_proactivity=initiative_proactivity,
-                adaptability_resilience=adaptability_resilience,
+                personalized_fact=personalized_fact,
                 value_creation=value_creation,
                 passion_motivation=passion_motivation,
             )

@@ -12,59 +12,36 @@ llm = OpenAI(temperature=0.9)
 
 
 def generate_lk_bio(
-    professional_title,
-    years_of_experience,
-    professional_values,
-    problem_solving,
-    emotional_intelligence,
-    personal_growth_mindset,
-    teamwork_collaboration,
-    communication_skills,
-    initiative_proactivity,
-    adaptability_resilience,
-    value_creation,
-    passion_motivation,
+        bio_samples,
+        professional_title,
+        personalized_fact,
+        value_creation,
+        passion_motivation,
 ):
     prompt = PromptTemplate(
         input_variables=[
+            "bio_samples"
             "professional_title",
-            "years_of_experience",
-            "professional_values",
-            "problem_solving",
-            "emotional_intelligence",
-            "personal_growth_mindset",
-            "teamwork_collaboration",
-            "communication_skills",
-            "initiative_proactivity",
-            "adaptability_resilience",
+            "personalized_fact"
             "value_creation",
             "passion_motivation",
         ],
-        template="generate a linkedin bio (summary/about me field) based on the following variables:"
-        "professional_title: {professional_title},"
-        "years_of_experience: {years_of_experience},"
-        "professional_values: {professional_values},"
-        "problem_solving: {problem_solving},"
-        "emotional_intelligence: {emotional_intelligence},"
-        "personal_growth_mindset: {personal_growth_mindset},"
-        "teamwork_collaboration: {teamwork_collaboration},"
-        "communication_skills: {communication_skills},"
-        "initiative_proactivity: {initiative_proactivity},"
-        "adaptability_resilience: {adaptability_resilience},"
-        "value_creation: {value_creation},"
-        "passion_motivation: {passion_motivation}",
+        template="i want you to generate a linkedin bio/summary/aboutme section."
+                 "i am going to provide you a sample of example bios so that you can base your"
+                 " answer upon that. after providing you the examples i want you to implement"
+                 " a new bio based on the following user inputs: professional title,a fact about"
+                 "the user (i want you to use this fact about the user to personalize the bio,"
+                 "again, using the example ones as context.)"
+                 " what is their passion/motivation/drive and what value can they provide to the world."
+                 "context = {bio_samples}, professional title : {professional_title}, fact about the user:"
+                 "{personalized_fact}, passion/motivation/drive : {passion_motivation}, value_creation:"
+                 "{value_creation}"
+
     )
     formatted_prompt = prompt.format(
+        bio_samples=bio_samples,
         professional_title=professional_title,
-        years_of_experience=years_of_experience,
-        professional_values=professional_values,
-        problem_solving=problem_solving,
-        emotional_intelligence=emotional_intelligence,
-        personal_growth_mindset=personal_growth_mindset,
-        teamwork_collaboration=teamwork_collaboration,
-        communication_skills=communication_skills,
-        initiative_proactivity=initiative_proactivity,
-        adaptability_resilience=adaptability_resilience,
+        personalized_fact=personalized_fact,
         value_creation=value_creation,
         passion_motivation=passion_motivation,
     )
