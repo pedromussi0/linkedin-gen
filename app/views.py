@@ -52,11 +52,11 @@ def generate_bio(request):
                 passion_motivation=passion_motivation,
             )
 
-            return render(request, "app/home.html", {"bio": bio})
+            return render(request, "app/generatebio.html", {"bio": bio})
     else:
         form = BioGenForm()
 
-    return render(request, "app/home.html", {"form": form})
+    return render(request, "app/generatebio.html", {"form": form})
 
 
 # -------- login and register views -------------
