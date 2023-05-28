@@ -25,11 +25,11 @@ def generate_bio(request):
             request.session["creator"] = creator.id
 
             professional_title = form.cleaned_data["professional_title"]
-            personalized_fact= form.cleaned_data['personalized_fact']
+            personalized_fact = form.cleaned_data["personalized_fact"]
             value_creation = form.cleaned_data["value_creation"]
             passion_motivation = form.cleaned_data["passion_motivation"]
 
-            with open('teste.txt', 'r') as file:
+            with open("teste.txt", "r") as file:
                 bio_samples = file.read()
 
             bio = generate_lk_bio(
