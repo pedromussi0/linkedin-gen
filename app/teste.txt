@@ -1,0 +1,26 @@
+example1 = "As a teenager at school, I was the kid other students approached about issues with their phone or laptop. I was the go-to guy for fixing resolving any technical problems.
+
+Today, not much has changed. I’m still the first point of call for technical issues. The difference is I now also develop innovative software to solve the problems of multinational companies. One of my most recent projects involved designing and rolling-out a new piece of software to optimise the efficiency of holiday bookings. This contributed to a reduction in staff numbers and 12% increase in travel bookings.
+
+In my spare time, I manage a voluntary organisation called Butterfly, which aims to help young people get involved in technology. This involves training kids in software development and key technical processes. I also create PS4 games, one of which was voted as the best game of 2020 on over 10 websites.
+
+If you want to know more about me, send me a message or reach out to me at softwaredevelopment@example.ex"
+
+example2 = "I’m a sales manager, specialising in the sale of construction materials. Over the course of 15 years in this sphere, I have built a large network of contacts with suppliers and customers across Europe.
+
+Currently employed as sales manager at IC2I Construction Europe Ltd., I build relationships with suppliers and clients while executing new sales strategies to generate growth. I also lead a team of six sales staff and source new materials across Europe. During my time in this role, I have finalised the sale of over 100 million euros worth of construction materials.
+
+Among my colleagues, I am known as a tenacious go-getter. I set challenging goals and I make sure my team have the capabilities to meet them.
+
+Having recently completed a 12-month contract in Russia, I am now open to new opportunities in the UK or across Europe. Feel free to get in touch with me."
+
+example3 = "I am a mechanical engineering student at Manchester University. Due to graduate in the coming months, I am eager to secure challenging roles in mechanical engineering.
+
+In the second year of my degree I undertook a 6-month placement at an engineering company in Manchester. I was delighted to be presented with the opportunity to utilise the skills gained during my studies to solve problems in the engineering world. During the course of this placement, I played a key role in developing a new part for the company’s manufacturing plant. This revolutionary part has since led to a cost reduction of six hundred thousand pounds.
+
+My studies have provided me with broad proficiency in the use of mechanical engineering methods, tools, software packages and techniques. Alongside this, I have developed sound communication skills while delivering presentations to large audiences at university. As such, I am confident that I can make an instant impact in engineering roles.
+
+I am eager to hear about potential career opportunities, so I would be pleased to chat about job openings in the engineering sphere.
+
+My key skills include: Mechanical engineering, aerospace thermodynamics, electrical energy supply, engineering design, mathematics, fluid mechanics."
+

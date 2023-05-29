@@ -29,8 +29,9 @@ def generate_bio(request):
             value_creation = form.cleaned_data["value_creation"]
             passion_motivation = form.cleaned_data["passion_motivation"]
 
-            with open("teste.txt", "r") as file:
-                bio_samples = file.read()
+            module_dir = os.path.dirname(__file__)
+            file_path = os.path.join(module_dir, "teste.txt")
+            bio_samples = read_file_text(file_path)
 
             bio = generate_lk_bio(
                 bio_samples=bio_samples,

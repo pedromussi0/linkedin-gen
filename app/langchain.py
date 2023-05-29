@@ -20,8 +20,10 @@ def generate_lk_bio(
 ):
     prompt = PromptTemplate(
         input_variables=[
-            "bio_samples" "professional_title",
-            "personalized_fact" "value_creation",
+            "bio_samples",
+            "professional_title",
+            "personalized_fact",
+            "value_creation",
             "passion_motivation",
         ],
         template="i want you to generate a linkedin bio/summary/aboutme section."
@@ -33,7 +35,7 @@ def generate_lk_bio(
         " what is their passion/motivation/drive and what value can they provide to the world."
         "context = {bio_samples}, professional title : {professional_title}, fact about the user:"
         "{personalized_fact}, passion/motivation/drive : {passion_motivation}, value_creation:"
-        "{value_creation}",
+        "{value_creation}.",
     )
     formatted_prompt = prompt.format(
         bio_samples=bio_samples,
@@ -43,3 +45,9 @@ def generate_lk_bio(
         passion_motivation=passion_motivation,
     )
     return llm(formatted_prompt)
+
+
+def read_file_text(file_path):
+    with open(file_path, "r") as file:
+        file_text = file.read()
+    return file_text
