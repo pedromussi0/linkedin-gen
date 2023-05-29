@@ -12,43 +12,34 @@ llm = OpenAI(temperature=0.9)
 
 
 def generate_lk_bio(
-    bio_samples,
-    professional_title,
-    personalized_fact,
-    value_creation,
-    passion_motivation,
+    professional_title, personalized_fact, background, current_role, relevant_skills
 ):
     prompt = PromptTemplate(
         input_variables=[
-            "bio_samples",
             "professional_title",
             "personalized_fact",
-            "value_creation",
-            "passion_motivation",
+            "background",
+            "current_role",
+            "relevant_skills",
         ],
-        template="i want you to generate a linkedin bio/summary/aboutme section."
-        "i am going to provide you a sample of example bios so that you can base the"
-        " bio structure upon that.Note that you cannot assume things about the user, "
-        "you can only work with the provided inputs. after providing you the examples i want you to implement"
-        " a new bio based on the following user inputs: professional title,a fact about"
-        "the user (i want you to use this fact about the user to personalize the bio,"
-        "again, using the example ones as context.)"
-        " what is their passion/motivation/drive and what value can they provide to the world."
-        "context = {bio_samples}, professional title : {professional_title}, fact about the user:"
-        "{personalized_fact}, passion/motivation/drive : {passion_motivation}, value_creation:"
-        "{value_creation}.",
+        template="I need you to create a linkedin 'about me section' based on the user inputs: "
+        "professional_title, personalized_fact,background, current_role and relevant skills."
+        "you're going to use the 'professional_title' as context to how the summary should be formulated"
+        " accordingly to the user title. professional_title:{professional_title}"
+        "you're going to use relevant_skills as a way of knowing what the user knows and relating"
+        "that with the whole context. relevant_skills:{relevant_skills}"
+        "you're going to use 'personalized_fact' as a way of personalizing the summary, relating those facts"
+        " with the assumed mentality of the person. personalized_fact:{personalized_fact}"
+        "you're going to use 'background' as a way of making every fact work together and relate with "
+        "each other, understanding the story of the person. background:{background}"
+        "you're going to use 'current role' as a way of understanding what the user is experiencing and"
+        " learning. current_role:{current_role}",
     )
     formatted_prompt = prompt.format(
-        bio_samples=bio_samples,
         professional_title=professional_title,
         personalized_fact=personalized_fact,
-        value_creation=value_creation,
-        passion_motivation=passion_motivation,
+        background=background,
+        current_role=current_role,
+        relevant_skills=relevant_skills,
     )
     return llm(formatted_prompt)
-
-
-def read_file_text(file_path):
-    with open(file_path, "r") as file:
-        file_text = file.read()
-    return file_text

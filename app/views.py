@@ -8,6 +8,7 @@ from .forms import BioGenForm
 from .langchain import *
 from django.core.mail import send_mail
 
+
 # Create your views here.
 
 
@@ -26,25 +27,22 @@ def generate_bio(request):
 
             professional_title = form.cleaned_data["professional_title"]
             personalized_fact = form.cleaned_data["personalized_fact"]
-            value_creation = form.cleaned_data["value_creation"]
-            passion_motivation = form.cleaned_data["passion_motivation"]
-
-            module_dir = os.path.dirname(__file__)
-            file_path = os.path.join(module_dir, "teste.txt")
-            bio_samples = read_file_text(file_path)
+            background = form.cleaned_data["background"]
+            current_role = form.cleaned_data["current_role"]
+            relevant_skills = form.cleaned_data["relevant_skills"]
 
             bio = generate_lk_bio(
-                bio_samples=bio_samples,
                 professional_title=professional_title,
                 personalized_fact=personalized_fact,
-                value_creation=value_creation,
-                passion_motivation=passion_motivation,
+                background=background,
+                current_role=current_role,
+                relevant_skills=relevant_skills,
             )
 
             # Send email to the current user
             subject = "Your Bio and Professional Title"
             message = f"Hello {creator.username},\n\nHere is your generated bio and professional title:\n\nBio: {bio}\nProfessional Title: {professional_title}"
-            from_email = "pedropriottomussi@gmail.com"
+            from_email = os.getenv("HOST_EMAIL")
             send_mail(subject, message, from_email, recipient_list=[creator.email])
 
             return render(request, "app/generatebio.html", {"bio": bio})
