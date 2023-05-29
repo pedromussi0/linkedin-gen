@@ -6,7 +6,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from .forms import BioGenForm
 from .langchain import *
-
+from django.core.mail import send_mail
 
 # Create your views here.
 
@@ -40,6 +40,12 @@ def generate_bio(request):
                 value_creation=value_creation,
                 passion_motivation=passion_motivation,
             )
+
+            # Send email to the current user
+            subject = "Your Bio and Professional Title"
+            message = f"Hello {creator.username},\n\nHere is your generated bio and professional title:\n\nBio: {bio}\nProfessional Title: {professional_title}"
+            from_email = "pedropriottomussi@gmail.com"
+            send_mail(subject, message, from_email, recipient_list=[creator.email])
 
             return render(request, "app/generatebio.html", {"bio": bio})
     else:
