@@ -17,6 +17,7 @@ def home(request):
     return render(request, "app/home.html")
 
 
+@login_required()
 def generate_bio(request):
     if request.method == "POST":
         form = BioGenForm(request.POST)
@@ -25,23 +26,19 @@ def generate_bio(request):
 
             request.session["creator"] = creator.id
 
-            professional_title = form.cleaned_data["professional_title"]
+            professional_experience = form.cleaned_data["professional_experience"]
             personalized_fact = form.cleaned_data["personalized_fact"]
-            background = form.cleaned_data["background"]
-            current_role = form.cleaned_data["current_role"]
-            relevant_skills = form.cleaned_data["relevant_skills"]
+            skills = form.cleaned_data["skills"]
 
             bio = generate_lk_bio(
-                professional_title=professional_title,
+                professional_experience=professional_experience,
                 personalized_fact=personalized_fact,
-                background=background,
-                current_role=current_role,
-                relevant_skills=relevant_skills,
+                skills=skills,
             )
 
             # Send email to the current user
             subject = "Your Bio and Professional Title"
-            message = f"Hello {creator.username},\n\nHere is your generated bio and professional title:\n\nBio: {bio}\nProfessional Title: {professional_title}"
+            message = f"Hello {creator.username},\n\nHere is your generated bio:\n\nBio: {bio}"
             from_email = os.getenv("HOST_EMAIL")
             send_mail(subject, message, from_email, recipient_list=[creator.email])
 

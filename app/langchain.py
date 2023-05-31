@@ -8,40 +8,33 @@ load_dotenv()
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
-llm = OpenAI(temperature=0.9)
+llm = OpenAI(temperature=0.8)
 
 
-def generate_lk_bio(
-    professional_title, personalized_fact, background, current_role, relevant_skills
-):
+def generate_lk_bio(professional_experience, personalized_fact, skills):
     prompt = PromptTemplate(
         input_variables=[
-            "professional_title",
+            "professional_experience",
             "personalized_fact",
-            "background",
-            "current_role",
-            "relevant_skills",
+            "skills",
         ],
-        template=" create a linkedin 'about me section'by analyzing the following user inputs and identifying"
-        "how everything fits together: "
-        "professional_title, personalized_fact,background, current_role and relevant skills."
-        "you're going to use the 'professional_title' as context to how the summary should be formulated"
-        " accordingly to the user title. professional_title:{professional_title}"
-        "you're going to use relevant_skills as a way of knowing what the user knows.Then you're going to "
-        "relate the"
-        "answer with the whole context provided.relevant_skills:{relevant_skills}."
-        "you're going to use 'personalized_fact' as a way of personalizing the summary, relating those facts"
-        " with the assumed mentality of the person. personalized_fact:{personalized_fact}"
-        "you're going to use 'background' as a way of making every fact work together and relate with "
-        "each other, understanding the story of the person. background:{background}"
-        "you're going to use 'current role' as a way of understanding what the user is learning and"
-        " wants to develop knowledge in. current_role:{current_role}",
+        template="Generate a clear,concise,professional but -->personal<-- linkedin bio (in english)"
+        " about a person based on"
+        " the following person's information: {professional_experience},{personalized_fact},{skills}."
+        "Make sure to:"
+        "- check your dataset for what makes a good linkedin bio;"
+        "- do not simply repeat what the information says, but identify how the"
+        "information relates with each other -> it is important to create a bio that values"
+        "the owner of the bio;"
+        "- make sure to compare and identify soft and hard skills and see how they relate"
+        " with each other and how they correlate with the whole context of the person's experience."
+        "- if there isn't enough information on what the user has done or accomplished, do not make up"
+        " information. Simply correlate the information available with the context provided and create a"
+        " clear and concise bio.",
     )
     formatted_prompt = prompt.format(
-        professional_title=professional_title,
+        professional_experience=professional_experience,
         personalized_fact=personalized_fact,
-        background=background,
-        current_role=current_role,
-        relevant_skills=relevant_skills,
+        skills=skills,
     )
     return llm(formatted_prompt)

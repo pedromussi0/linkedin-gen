@@ -7,28 +7,18 @@
         {% csrf_token %}
 
         <div class="form-group">
-            <label for="id_professional_title">Professional Title</label>
-            <input type="text" name="professional_title" id="id_professional_title" class="form-control">
+            <label for="id_professional_title">Professional Experience</label>
+            <input type="text" name="professional_experience" id="id_professional_experience" class="form-control">
         </div>
 
-       <div class="form-group">
-            <label for="id_professional_title">Tell me about you.What do you like to do? What excites you?</label>
+        <div class="form-group">
+            <label for="id_skills">Tell me the skills that you have learned, and/or that you like to work with</label>
+            <input type="text" name="skills" id="id_skills" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="id_personalized_fact">Tell me about you.What do you like to do? What excites you?</label>
             <input type="text" name="personalized_fact" id="id_personalized_fact" class="form-control">
-        </div>
-
-        <div class="form-group">
-            <label for="id_value_creation">Tell me about your background.</label>
-            <input type="text" name="background" id="id_background" class="form-control">
-        </div>
-
-        <div class="form-group">
-            <label for="id_passion_motivation">What are you learning on your current role?</label>
-            <input type="text" name="current_role" id="id_current_role" class="form-control">
-        </div>
-
-        <div class="form-group">
-            <label for="id_passion_motivation">Tell me about your technical skills, what do you like to work with?</label>
-            <input type="text" name="relevant_skills" id="id_relevant_skills" class="form-control">
         </div>
 
         <button type="submit" class="btn btn-primary">Generate Bio</button>
