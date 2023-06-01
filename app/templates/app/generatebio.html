@@ -6,6 +6,16 @@
         max-width: 25rem;
         margin: 5rem auto 0;
     }
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+    .form-control {
+        height: 3rem;
+    }
+    .bio {
+        height: 25rem;
+        resize: none;
+    }
 </style>
 {% endblock %}
 
@@ -15,7 +25,7 @@
         <form method="POST" action="{% url 'generate_bio' %}">
             {% csrf_token %}
             <div class="form-group">
-                <label for="id_professional_title">Professional Experience</label>
+                <label for="id_professional_experience">Professional Experience</label>
                 <input type="text" name="professional_experience" id="id_professional_experience" class="form-control">
             </div>
 
@@ -33,22 +43,20 @@
         </form>
 
         <div class="text-area-wrapper">
-
             <form method="POST" action="{% url 'send_email' %}">
                 {% csrf_token %}
-                <div style="display: contents;">
-                <label for="bio"></label>
-                <textarea class="form-control bio custom-width" name="textarea_content" id="bio" rows="3">
-                    {% if bio %}
-                        {{ bio }}
-                    {% endif %}
-                </textarea>
+                <div class="form-group">
+                    <label for="bio">Bio</label>
+                    <textarea class="form-control bio" name="textarea_content" id="bio" rows="3">
+                        {% if bio %}
+                            {{ bio }}
+                        {% endif %}
+                    </textarea>
+                </div>
                 <div class="button-container">
                     <button type="submit" class="btn btn-primary" style="background-color: #343a40; border-color: lightgray;">Send</button>
                 </div>
-            </div>
             </form>
-
         </div>
     </div>
 </div>
