@@ -35,7 +35,8 @@ urlpatterns = [
     ),
     path("register/", views.register_view, name="register"),
     path("", views.home, name="home"),
-    path("generatebio/", views.generate_bio, name="generate_bio")
+    path("generatebio/", views.generate_bio, name="generate_bio"),
+    path("save/", views.send_email, name="send_email")
     #
     #
     #

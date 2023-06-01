@@ -26,7 +26,7 @@ def generate_lk_bio(professional_experience, personalized_fact, skills):
         "- do not simply repeat what the information says, but identify how the"
         "information relates with each other -> it is important to create a bio that values"
         "the owner of the bio;"
-        "- make sure to compare and identify soft and hard skills and see how they relate"
+        "- make sure to compare and identify soft and hard skills, and treat them as such. see how they relate"
         " with each other and how they correlate with the whole context of the person's experience."
         "- if there isn't enough information on what the user has done or accomplished, do not make up"
         " information. Simply correlate the information available with the context provided and create a"

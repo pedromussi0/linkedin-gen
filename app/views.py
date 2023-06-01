@@ -36,17 +36,25 @@ def generate_bio(request):
                 skills=skills,
             )
 
-            # Send email to the current user
-            subject = "Your Bio and Professional Title"
-            message = f"Hello {creator.username},\n\nHere is your generated bio:\n\nBio: {bio}"
-            from_email = os.getenv("HOST_EMAIL")
-            send_mail(subject, message, from_email, recipient_list=[creator.email])
-
             return render(request, "app/generatebio.html", {"bio": bio})
     else:
         form = BioGenForm()
 
     return render(request, "app/generatebio.html", {"form": form})
+
+
+def send_email(request):
+    if request.method == "POST":
+        bio = request.POST.get("textarea_content")
+
+        subject = "Your Bio and Professional Title"
+        message = f"Hello {request.user.username},\n\nHere is your generated bio:\n\nBio: {bio}"
+        from_email = os.getenv("HOST_EMAIL")
+        send_mail(subject, message, from_email, recipient_list=[request.user.email])
+
+        return redirect(generate_bio)
+
+    return render(request, "app/generatebio.html")
 
 
 # -------- login and register views -------------

@@ -1,42 +1,55 @@
 {% extends "app/base.html" %}
 {% load static %}
 {% block head %}
+<style>
+    .form-wrapper {
+        max-width: 25rem;
+        margin: 5rem auto 0;
+    }
+</style>
 {% endblock %}
+
 {% block content %}
-    <form method="POST" action="{% url 'generate_bio' %}">
-        {% csrf_token %}
-
-        <div class="form-group">
-            <label for="id_professional_title">Professional Experience</label>
-            <input type="text" name="professional_experience" id="id_professional_experience" class="form-control">
-        </div>
-
-        <div class="form-group">
-            <label for="id_skills">Tell me the skills that you have learned, and/or that you like to work with</label>
-            <input type="text" name="skills" id="id_skills" class="form-control">
-        </div>
-
-        <div class="form-group">
-            <label for="id_personalized_fact">Tell me about you.What do you like to do? What excites you?</label>
-            <input type="text" name="personalized_fact" id="id_personalized_fact" class="form-control">
-        </div>
-
-        <button type="submit" class="btn btn-primary">Generate Bio</button>
-    </form>
-
-    <div class="text-area-wrapper">
-        <div style="display: contents;">
+<div class="container">
+    <div class="form-wrapper">
+        <form method="POST" action="{% url 'generate_bio' %}">
             {% csrf_token %}
-            <label for="bio"></label>
-            <textarea class="form-control bio custom-width" name="textarea_content" id="bio" rows="3">
-                {% if bio %}
-                    {{ bio }}
-                {% endif %}
-            </textarea>
-            <div class="button-container">
-                <button type="submit" class="btn btn-primary" style="background-color: #343a40; /* Set the background color to match bs-theme-dark */
-                border-color: lightgray;" disabled>Save</button>
+            <div class="form-group">
+                <label for="id_professional_title">Professional Experience</label>
+                <input type="text" name="professional_experience" id="id_professional_experience" class="form-control">
             </div>
+
+            <div class="form-group">
+                <label for="id_skills">Tell me the skills that you have learned, and/or that you like to work with</label>
+                <input type="text" name="skills" id="id_skills" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="id_personalized_fact">Tell me about you. What do you like to do? What excites you?</label>
+                <input type="text" name="personalized_fact" id="id_personalized_fact" class="form-control">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Generate Bio</button>
+        </form>
+
+        <div class="text-area-wrapper">
+
+            <form method="POST" action="{% url 'send_email' %}">
+                {% csrf_token %}
+                <div style="display: contents;">
+                <label for="bio"></label>
+                <textarea class="form-control bio custom-width" name="textarea_content" id="bio" rows="3">
+                    {% if bio %}
+                        {{ bio }}
+                    {% endif %}
+                </textarea>
+                <div class="button-container">
+                    <button type="submit" class="btn btn-primary" style="background-color: #343a40; border-color: lightgray;">Send</button>
+                </div>
+            </div>
+            </form>
+
         </div>
     </div>
+</div>
 {% endblock %}
